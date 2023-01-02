@@ -1,3 +1,4 @@
+/* eslint-disable no-unneeded-ternary */
 /* *******************************************************************************************
  *                                                                                           *
  * Please read the following tutorial before implementing tasks:                              *
@@ -53,8 +54,9 @@ function parseDataFromIso8601(value) {
  *    Date(2012,1,1)    => true
  *    Date(2015,1,1)    => false
  */
-function isLeapYear(/* date */) {
-  throw new Error('Not implemented');
+function isLeapYear(date) {
+  const DATE = new Date(date.getFullYear(), 1, 29);
+  return DATE.getDate() === 29 ? true : false;
 }
 
 
@@ -73,8 +75,10 @@ function isLeapYear(/* date */) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,10,0,0,250)     => "00:00:00.250"
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
-function timeSpanToString(/* startDate, endDate */) {
-  throw new Error('Not implemented');
+function timeSpanToString(startDate, endDate) {
+  const DATE = new Date(endDate - startDate);
+  const RESULT = DATE.toISOString().slice(11, DATE.toISOString().length - 1);
+  return RESULT;
 }
 
 
